@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+<title>TheBaton - Login</title>
+<link rel="stylesheet" href="static/css/login.css">
+
+{% endblock %}
+{% block content %}
+
+<!-- Start: Registration Form with Photo -->
+<section class="register-photo">
+    <!-- Start: Form Container -->
+    <div class="form-container">
+        <!-- Start: Image -->
+        <div class="image-holder"></div><!-- End: Image -->
+        <form method="post" action="">
+
+            {{ form.hidden_tag() }}
+            <h2 class="text-center"><strong>Login</strong></h2>
+            <div class="form-group">
+                {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control-lg", placeholder="Email") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control form-control-lg", placeholder="Password") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    {{ form.remember(class="form-check-input") }}
+                    {{ form.remember.label(class="form-check-label") }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button>
+            </div>
+        
+            <a class="forgot" href="{{ url_for('user_api.forgot_password') }}">Forgot Password?</a>
+            <a class="already" href="{{ url_for('user_api.register') }}">Need an account? Register here</a>
+        </form>
+    </div><!-- End: Form Container -->
+</section><!-- End: Registration Form with Photo -->
+
+{% endblock %}

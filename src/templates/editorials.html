@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+<title>TheBaton - Editorials</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/editorials.css') }}">
+{% set page_name = "Editorials" %}
+
+
+{% endblock %}
+
+
+{% block content %}
+
+<header class="art">
+    <section class="art-text">
+        <h1>FEATURED EDITORIALS</h1>
+        <!-- <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor.</h2> -->
+    </section>
+    <section class="art-grid">
+        {% for editorial in editorial_post %}
+        <article class="art-element" data-tilt>
+            <a href="/editorials/{{ editorial.public_id }}">
+            <img src='{{ editorial.cover_image }}' alt="editorial thumbnail">
+            <div class="container">
+                <h3>{{ editorial.title }}</h3>
+                <p>{{ editorial.cta_title }}</p>
+            </div>
+            </a>
+        </article>
+        {% endfor %}
+    </section>
+    <section class="art-btn">
+        
+        {% set current_page_id = req_args.get('page') %}
+        
+        {% if not current_page_id %}
+            {% set page_id = 2 %}
+        {% else %}
+            {% set page_id = int(current_page_id) + 1 %}
+        {% endif %}
+
+        <button><a href="/editorials?page={{ page_id }}"> NEXT PAGE</a></button>
+    </section>
+</header>
+{% endblock %}

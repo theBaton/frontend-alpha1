@@ -1,0 +1,126 @@
+.art {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-block: clamp(25px,10vw,100px);
+    
+}
+
+.art-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Montserrat";
+    padding-block-end: 2vw;
+    padding-inline: 10vw;
+    text-align: center;
+    
+    
+}
+
+.art-text h1{
+    
+    font-size: 1.3125rem;
+    font-weight: 500;
+    letter-spacing: 1rem;
+    text-indent: 0.5rem; /* to maintain center alignment */
+
+}
+
+.art-text h2 {
+    
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.5rem;
+    
+}
+.art-element a {
+text-decoration: none !important;
+color: var(--clr-primary-text);
+}
+
+
+.art-grid {
+    
+    display: grid;
+    grid-gap: 5vw;
+    padding-block: 3em;
+    padding-inline: 5vw;
+    grid-template-columns: repeat(2,1fr);
+}
+
+@media (min-width:767px) {
+    .art-grid {
+        grid-template-columns: repeat(3,1fr);
+
+    }
+}
+.art-element {
+    background-color: var(--clr-light-primary);
+    border-radius: 0.3em;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.07);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    /* transition: all 0.3s ease-in-out; */
+}
+.art-element:hover {
+    transform: scale(1.1,1.1);
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.07);
+}
+.art-element img {
+    width: 100%;
+}
+
+.art-element .container {
+    transform: translateZ(30px);
+    padding-inline: clamp(0.2rem,5vw,1.4rem);
+    padding-block: clamp(0.2rem,5vw,1rem);
+}
+
+.art-element h3 {
+    font-weight: 700;
+    color: var(--clr-primary-red);
+    font-size: 0.9rem;
+    padding-block-end: 0.7rem;
+}
+
+.art-element p {
+    font-size: 0.7rem;
+    font-weight: 400;
+    line-height: 1rem;
+}
+.art-btn {
+    overflow: hidden;
+}
+
+.art-btn button{
+    overflow: hidden;
+    border: none;
+    padding-block: 1rem;
+    border-radius: 1em;
+    background-color: var(--clr-primary-red);
+    transition: all 0.3s ease-in-out;
+    
+}
+
+.art-btn button:hover {
+    background-color: var(--clr-light-primary);
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.1) inset;
+}
+
+.art-btn a{
+    overflow: hidden;
+    font-family: "Montserrat";
+    text-decoration: none;
+    color: var(--clr-light-primary);
+    padding: 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    transition: all 0.2s 0.1s;
+}
+
+.art-btn a:hover{
+    color: var(--clr-primary-red);
+}  

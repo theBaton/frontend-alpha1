@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+<title>TheBaton - {{ blog_post.title }}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/blogpost.css') }}">
+{% set title = blog_post.title %}
+{% set sub_title = blog_post.sub_title %}
+
+{% endblock %}
+{% block content %}
+<header class="masthead" style="background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{{ blog_post.cover_image }}');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto">
+                <div class="post-heading">
+                    <h1><strong>{{ blog_post.title }}</strong></h1>
+                    <h2 class="subheading">{{ blog_post.sub_title }}</h2><span class="meta">Posted by&nbsp;<a href="#">{{ blog_post.author.name }}</a>&nbsp;on {{ blog_post.date_posted.strftime('%d %B %Y') }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto" style="font-family: Montserrat, sans-serif;text-align: justify;">
+                {% block blogpost %}
+                {% endblock blogpost %}
+            </div>
+        </div>
+    </div>
+</article>
+
+{% endblock content%}

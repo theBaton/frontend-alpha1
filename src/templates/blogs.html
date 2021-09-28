@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+<title>TheBaton - Blogs</title>
+<link rel="stylesheet" href="static/css/blogs.css">
+{% set page_name = "Blogs" %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<header class="art">
+    <section class="art-text">
+        <h1>RECENT BLOGS</h1>
+        <!-- <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor.</h2> -->
+    </section>
+    <section class="art-grid">
+        {% for blog in blogs %}
+        <article class="art-element" data-tilt>
+            <a href="/blogs/{{ blog.public_id }}">
+            <img src="{{ blog.cover_image }}" alt="blog thumbnail">
+            <div class="container">
+                <h3>{{ blog.title }}</h3>
+                <p>{{ blog.cta_title }}</p>
+            </div>
+            </a>
+        </article>
+        {% endfor %}
+    </section>
+    <section class="art-btn">
+        
+        {% set current_page_id = req_args.get('page') %}
+        
+        {% if not current_page_id %}
+            {% set page_id = 2 %}
+        {% else %}
+            {% set page_id = int(current_page_id) + 1 %}
+        {% endif %}
+
+        <button><a href="/blog?page={{ page_id }}"> READ MORE</a></button>
+    </section>
+</header>
+{% endblock %}

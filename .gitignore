@@ -2,9 +2,14 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.vscode/
 
 # C extensions
 *.so
+
+#AI-psd files
+ai-psd/
+
 
 # Distribution / packaging
 .Python

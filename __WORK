@@ -1,0 +1,10 @@
+
+
+    [1] Article formatting UI
+    [2] error: 
+                [W 210915 13:29:05 wsgi:196] 404 GET /articles/static/logo-fav/site.webmanifest (127.0.0.1) 4.99ms
+                [W 210915 13:29:29 wsgi:196] 404 GET /static/css/Navigation-Clean.css (127.0.0.1) 18.95ms
+                [W 210915 13:29:29 wsgi:196] 404 GET /articles/static/css/blogpost.css (127.0.0.1) 28.92ms
+                [W 210915 13:29:29 wsgi:196] 404 GET /articles/static/logo-fav/site.webmanifest (127.0.0.1) 32.91ms
+
+                

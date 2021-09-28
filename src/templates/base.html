@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:image" content="assets/img/thebaton_logo_twitter.png">
+    <meta name="twitter:image" content="assets/img/thebaton_logo_twitter.png">
+    {% if title %}
+    <meta name="twitter:title" content="TheBaton - {{ title }}">
+    {% elif page_name %}
+    <meta name="twitter:title" content="TheBaton - {{ page_name }}">
+    {% else %}
+    <meta name="twitter:title" content="TheBaton">
+    {% endif %}
+
+    {% if sub_title %}
+        <meta name="twitter:description" content="{{ sub_title }}">
+        <meta name="description" content="{{ sub_title }}">
+    {% elif page_name %}
+        <meta name="twitter:description" content="TheBaton - {{ page_name }}">
+        <meta name="description" content="TheBaton - {{ page_name }}">
+    {% else %}
+        <meta name="twitter:description" content="TheBaton">
+        <meta name="description" content="TheBaton">
+    {% endif %}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:type" content="website">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='logo-fav/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='logo-fav/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='logo-fav/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='logo-fav/site.webmanifest') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    
+    {% block title %}
+    {% endblock %}
+
+
+</head>
+<body>
+        <!-- Start: Navigation Clean -->
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+            <div class="container"><a class="navbar-brand" href="{{ url_for('user_api.index') }}"><img src="{{ url_for('static', filename='logo-fav/thebaton_logo_1000x160.png') }}" alt="TheBaton Logo"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link active" href="{{ url_for('user_api.index') }}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="{{ url_for('user_api.blogs') }}">Blogs</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="{{ url_for('user_api.editorials') }}">Editorials</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="{{ url_for('user_api.podcasts') }}">Podcasts</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="{{ url_for('user_api.contact') }}" >Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav><!-- End: Navigation Clean -->
+    <div class="hero-body">
+        <div class="has-text-centered">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                        {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            {% block content %}
+            {% endblock %}
+
+        </div>
+    </div>
+
+    <!-- Start: Footer Dark -->
+    <footer class="footer-dark">
+        <div class="container">
+            <div class="row">
+                <!-- Start: Services -->
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>Pages</h3>
+                    <ul>
+                        <li><a href="{{ url_for('user_api.index') }}">Home</a></li>
+                        <li><a href="{{ url_for('user_api.blogs') }}">Blogs</a></li>
+                        <li><a href="{{ url_for('user_api.editorials') }}">Editorials</a></li>
+                        <li><a href="{{ url_for('user_api.podcasts') }}">Podcasts</a></li>
+                        <li><a href="{{ url_for('user_api.contact') }}">Contact</a></li>
+                    </ul>
+                </div><!-- End: Services -->
+                <!-- Start: About -->
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>User Management</h3>
+                    <ul>
+                        <li><a href="{{ url_for('user_api.register') }}">Register</a></li>
+                        <li><a href="{{ url_for('user_api.login') }}">Login</a></li>
+                        <li><a href="{{ url_for('user_api.logout') }}">Logout</a></li>
+                    </ul>
+                </div><!-- End: About -->
+                <!-- Start: Footer Text -->
+                <div class="col-md-6 item text">
+                    <h3>TheBaton</h3>
+                    <p>TheBaton provides an open-ended, peer-reviewed forum for scholarly discussions of legal and socio-political issues of importance. We seek to promote conscientious and honest dialogue on issues affecting the global population through publishing pieces written by students and practitioners.</p>
+                </div><!-- End: Footer Text -->
+                <!-- Start: Social Icons -->
+                <div class="col item social">
+                    <a href="https://www.facebook.com/thebatonofficial" target="_blank"><i class="icon ion-social-facebook"></i></a>
+                    <a href="https://www.linkedin.com/company/thebatonofficial" target="_blank"><i class="icon ion-social-linkedin"></i></a>
+                    <a href="https://twitter.com/thebatonindia" target="_blank"><i class="icon ion-social-twitter"></i></a>
+                    <a href="https://www.instagram.com/thebatonofficial" target="_blank"><i class="icon ion-social-instagram"></i></a>
+                </div><!-- End: Social Icons -->
+            </div><!-- Start: Copyright -->
+            <p class="copyright">TheBaton © 2021</p><!-- End: Copyright -->
+        </div>
+    </footer><!-- End: Footer Dark -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/vanilla-tilt.js') }}"></script>    
+
+</body>
+</html>
